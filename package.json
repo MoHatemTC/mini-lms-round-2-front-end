@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "lms-frontend",
   "private": true,
   "version": "1.0.0",
@@ -11,6 +11,9 @@
     "lint": "eslint .",
     "test": "vitest"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
