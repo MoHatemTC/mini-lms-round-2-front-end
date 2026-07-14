@@ -1,0 +1,16 @@
+﻿{
+  "name": "lms-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Learning Management System - Frontend Application",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
