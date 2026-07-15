@@ -1,0 +1,96 @@
+export type CourseStatus = 'Published' | 'Draft' | 'Archived';
+export type CourseLevel = 'Beginner' | 'Intermediate' | 'Advanced';
+
+export interface Course {
+  id: string;
+  title: string;
+  slug: string;
+  instructor: string;
+  category: string;
+  level: CourseLevel;
+  status: CourseStatus;
+  duration: string;
+  lessonsCount: number;
+  studentsCount: number;
+  rating: number;
+  price: number;
+  thumbnail: string;
+}
+
+export const mockCourses: Course[] = [
+  {
+    id: 'CRS-2001',
+    title: 'Advanced UI/UX Principles',
+    slug: 'advanced-ui-ux-principles',
+    instructor: 'Michael Chen',
+    category: 'Design',
+    level: 'Advanced',
+    status: 'Published',
+    duration: '12h 30m',
+    lessonsCount: 45,
+    studentsCount: 2450,
+    rating: 4.8,
+    price: 89.99,
+    thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'CRS-2002',
+    title: 'Complete React Developer Bootcamp',
+    slug: 'complete-react-bootcamp',
+    instructor: 'Sarah Jenkins',
+    category: 'Development',
+    level: 'Intermediate',
+    status: 'Published',
+    duration: '24h 15m',
+    lessonsCount: 120,
+    studentsCount: 5200,
+    rating: 4.9,
+    price: 129.99,
+    thumbnail: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'CRS-2003',
+    title: 'Introduction to Digital Marketing',
+    slug: 'intro-digital-marketing',
+    instructor: 'Emily Davis',
+    category: 'Marketing',
+    level: 'Beginner',
+    status: 'Draft',
+    duration: '6h 45m',
+    lessonsCount: 24,
+    studentsCount: 0,
+    rating: 0,
+    price: 49.99,
+    thumbnail: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'CRS-2004',
+    title: 'Data Science with Python',
+    slug: 'data-science-python',
+    instructor: 'David Wilson',
+    category: 'Data Science',
+    level: 'Intermediate',
+    status: 'Published',
+    duration: '32h 00m',
+    lessonsCount: 150,
+    studentsCount: 3100,
+    rating: 4.7,
+    price: 149.99,
+    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: 'CRS-2005',
+    title: 'Photography Basics',
+    slug: 'photography-basics',
+    instructor: 'Sophia Martinez',
+    category: 'Photography',
+    level: 'Beginner',
+    status: 'Archived',
+    duration: '4h 20m',
+    lessonsCount: 15,
+    studentsCount: 850,
+    rating: 4.5,
+    price: 29.99,
+    thumbnail: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800',
+  },
+];

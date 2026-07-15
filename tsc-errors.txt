@@ -1,0 +1,165 @@
+src/components/layout/AdminSidebar.tsx(8,34): error TS6133: 'FolderKanban' is declared but its value is never read.
+src/components/layout/AdminSidebar.tsx(49,3): error TS6133: 'setIsMobileOpen' is declared but its value is never read.
+src/components/layout/AdminSidebar.tsx(78,33): error TS6133: 'groupIdx' is declared but its value is never read.
+src/components/layout/Footer.tsx(2,55): error TS6133: 'ExternalLink' is declared but its value is never read.
+src/components/layout/LearnerSidebar.tsx(50,3): error TS6133: 'setIsMobileOpen' is declared but its value is never read.
+src/components/layout/Navbar.tsx(4,30): error TS6133: 'ChevronDown' is declared but its value is never read.
+src/components/layout/NotificationCenter.tsx(5,3): error TS6133: 'Award' is declared but its value is never read.
+src/components/layout/NotificationCenter.tsx(5,17): error TS6133: 'Calendar' is declared but its value is never read.
+src/components/ui/CommandPalette.tsx(6,3): error TS6133: 'FileText' is declared but its value is never read.
+src/components/ui/CommandPalette.tsx(6,13): error TS6133: 'Play' is declared but its value is never read.
+src/pages/admin/Analytics.tsx(41,21): error TS6133: 'setTimeRange' is declared but its value is never read.
+src/pages/admin/Analytics.tsx(174,36): error TS6133: 'entry' is declared but its value is never read.
+src/pages/admin/Analytics.tsx(216,19): error TS2322: Type '(value: number) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType> & ((value: ValueType, name: NameType, item: TooltipPayloadEntry, index: number, payload: TooltipPayload) => [...] | ReactNode)'.
+  Type '(value: number) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType>'.
+    Types of parameters 'value' and 'value' are incompatible.
+      Type 'ValueType | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+src/pages/admin/Dashboard.tsx(4,42): error TS6133: 'TrendingUp' is declared but its value is never read.
+src/pages/admin/Dashboard.tsx(173,19): error TS2322: Type '(value: number) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType> & ((value: ValueType, name: NameType, item: TooltipPayloadEntry, index: number, payload: TooltipPayload) => [...] | ReactNode)'.
+  Type '(value: number) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType>'.
+    Types of parameters 'value' and 'value' are incompatible.
+      Type 'ValueType | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+src/pages/admin/Dashboard.tsx(267,30): error TS2322: Type '"danger" | "success" | "warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+  Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/FileManager.tsx(2,18): error TS6133: 'AnimatePresence' is declared but its value is never read.
+src/pages/admin/FileManager.tsx(82,65): error TS2322: Type '{ progress: number; className: string; indicatorClassName: string; }' is not assignable to type 'IntrinsicAttributes & ProgressBarProps'.
+  Property 'indicatorClassName' does not exist on type 'IntrinsicAttributes & ProgressBarProps'.
+src/pages/admin/FileManager.tsx(105,42): error TS2552: Cannot find name 'Clock'. Did you mean 'Lock'?
+src/pages/admin/Reports.tsx(5,29): error TS6133: 'ChevronDown' is declared but its value is never read.
+src/pages/admin/assignments/index.tsx(4,3): error TS6133: 'ClipboardCheck' is declared but its value is never read.
+src/pages/admin/assignments/index.tsx(5,19): error TS6133: 'ChevronRight' is declared but its value is never read.
+src/pages/admin/assignments/index.tsx(5,33): error TS6133: 'MessageSquare' is declared but its value is never read.
+src/pages/admin/assignments/index.tsx(66,44): error TS2322: Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/assignments/index.tsx(91,35): error TS2322: Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/courses/CourseForm.tsx(7,26): error TS6133: 'UploadCloud' is declared but its value is never read.
+src/pages/admin/courses/CourseForm.tsx(254,39): error TS2304: Cannot find name 'ArrowUpRight'.
+src/pages/admin/courses/CoursesList.tsx(40,11): error TS2322: Type '"secondary" | "success" | "warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+  Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/courses/CoursesList.tsx(123,21): error TS2322: Type '"secondary" | "success" | "warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+  Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/courses/CurriculumBuilder.tsx(12,10): error TS6133: 'cn' is declared but its value is never read.
+src/pages/admin/courses/CurriculumBuilder.tsx(162,40): error TS2322: Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/courses/QuizBuilder.tsx(52,21): error TS6133: 'setQuestions' is declared but its value is never read.
+src/pages/admin/courses/QuizBuilder.tsx(144,89): error TS2304: Cannot find name 'ChevronRight'.
+src/pages/admin/courses/QuizBuilder.tsx(174,52): error TS6133: 'oIndex' is declared but its value is never read.
+src/pages/admin/courses/index.tsx(7,22): error TS6133: 'Copy' is declared but its value is never read.
+src/pages/admin/courses/index.tsx(114,9): error TS6198: All destructured elements are unused.
+src/pages/admin/courses/index.tsx(212,30): error TS2322: Type '"secondary" | "success" | "warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+  Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/courses/index.tsx(317,34): error TS2322: Type '"secondary" | "success" | "warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+  Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/users/index.tsx(4,19): error TS6133: 'Plus' is declared but its value is never read.
+src/pages/admin/users/index.tsx(59,40): error TS2322: Type '"warning"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/admin/users/index.tsx(154,30): error TS2304: Cannot find name 'cn'.
+src/pages/auth/ForgotPassword.tsx(79,72): error TS2322: Type '{ type: "submit"; className: string; isLoading: boolean; children: string; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'isLoading' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+src/pages/auth/Login.tsx(111,67): error TS2322: Type '{ type: "submit"; className: string; isLoading: boolean; children: string; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'isLoading' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+src/pages/auth/Register.tsx(126,72): error TS2322: Type '{ type: "submit"; className: string; isLoading: boolean; children: string; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'isLoading' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+src/pages/auth/ResetPassword.tsx(109,72): error TS2322: Type '{ type: "submit"; className: string; isLoading: boolean; children: string; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'isLoading' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement>'.
+src/pages/error/NotFound.tsx(2,16): error TS6133: 'Search' is declared but its value is never read.
+src/pages/error/NotFound.tsx(19,9): error TS2322: Type '{ title: string; description: string; className: string; }' is not assignable to type 'IntrinsicAttributes & PageHeaderProps'.
+  Property 'description' does not exist on type 'IntrinsicAttributes & PageHeaderProps'.
+src/pages/error/Unauthorized.tsx(19,9): error TS2322: Type '{ title: string; description: string; className: string; }' is not assignable to type 'IntrinsicAttributes & PageHeaderProps'.
+  Property 'description' does not exist on type 'IntrinsicAttributes & PageHeaderProps'.
+src/pages/learner/Achievements.tsx(3,3): error TS6133: 'Trophy' is declared but its value is never read.
+src/pages/learner/Achievements.tsx(4,3): error TS6133: 'ChevronRight' is declared but its value is never read.
+src/pages/learner/Achievements.tsx(4,17): error TS6133: 'Award' is declared but its value is never read.
+src/pages/learner/Achievements.tsx(4,24): error TS6133: 'Shield' is declared but its value is never read.
+src/pages/learner/Achievements.tsx(4,32): error TS6133: 'CheckCircle2' is declared but its value is never read.
+src/pages/learner/Achievements.tsx(148,85): error TS2322: Type '{ progress: number; className: string; indicatorClassName: string; }' is not assignable to type 'IntrinsicAttributes & ProgressBarProps'.
+  Property 'indicatorClassName' does not exist on type 'IntrinsicAttributes & ProgressBarProps'.
+src/pages/learner/Achievements.tsx(165,37): error TS6133: 'index' is declared but its value is never read.
+src/pages/learner/Achievements.tsx(201,56): error TS2322: Type '{ progress: number; className: string; indicatorClassName: string; }' is not assignable to type 'IntrinsicAttributes & ProgressBarProps'.
+  Property 'indicatorClassName' does not exist on type 'IntrinsicAttributes & ProgressBarProps'.
+src/pages/learner/Assignments.tsx(2,1): error TS6192: All imports in import declaration are unused.
+src/pages/learner/Assignments.tsx(5,20): error TS6133: 'AlertCircle' is declared but its value is never read.
+src/pages/learner/Assignments.tsx(6,13): error TS6133: 'Calendar' is declared but its value is never read.
+src/pages/learner/Assignments.tsx(6,23): error TS6133: 'MessageSquare' is declared but its value is never read.
+src/pages/learner/Assignments.tsx(11,10): error TS6133: 'Avatar' is declared but its value is never read.
+src/pages/learner/Assignments.tsx(34,50): error TS7009: 'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.
+src/pages/learner/Assignments.tsx(34,65): error TS2554: Expected 1 arguments, but got 2.
+src/pages/learner/Calendar.tsx(2,18): error TS6133: 'AnimatePresence' is declared but its value is never read.
+src/pages/learner/Chat.tsx(8,10): error TS6133: 'Card' is declared but its value is never read.
+src/pages/learner/CourseDetails.tsx(5,15): error TS6133: 'Clock' is declared but its value is never read.
+src/pages/learner/CourseDetails.tsx(5,29): error TS6133: 'BookOpen' is declared but its value is never read.
+src/pages/learner/CourseDetails.tsx(13,10): error TS6133: 'cn' is declared but its value is never read.
+src/pages/learner/CourseDetails.tsx(105,67): error TS2339: Property 'category' does not exist on type '{ title: string; subtitle: string; instructor: { name: string; title: string; avatar: string; students: string; courses: number; rating: number; bio: string; }; rating: number; reviewsCount: string; students: string; ... 9 more ...; reviews: { ...; }[]; }'.
+src/pages/learner/CoursePlayer.tsx(292,75): error TS2322: Type '{ progress: number; className: string; indicatorClassName: string; }' is not assignable to type 'IntrinsicAttributes & ProgressBarProps'.
+  Property 'indicatorClassName' does not exist on type 'IntrinsicAttributes & ProgressBarProps'.
+src/pages/learner/Dashboard.tsx(3,31): error TS6133: 'BookOpen' is declared but its value is never read.
+src/pages/learner/Dashboard.tsx(4,35): error TS6133: 'Award' is declared but its value is never read.
+src/pages/learner/Dashboard.tsx(41,19): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/pages/learner/Dashboard.tsx(112,23): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/pages/learner/Dashboard.tsx(153,23): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/pages/learner/Dashboard.tsx(186,23): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/pages/learner/Dashboard.tsx(215,23): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/pages/learner/MyCourses.tsx(5,31): error TS6133: 'Filter' is declared but its value is never read.
+src/pages/learner/MyCourses.tsx(6,27): error TS6133: 'Clock' is declared but its value is never read.
+src/pages/learner/MyCourses.tsx(7,10): error TS6133: 'Trophy' is declared but its value is never read.
+src/pages/learner/MyCourses.tsx(220,23): error TS2322: Type '{ progress: number; className: string; indicatorClassName: string; }' is not assignable to type 'IntrinsicAttributes & ProgressBarProps'.
+  Property 'indicatorClassName' does not exist on type 'IntrinsicAttributes & ProgressBarProps'.
+src/pages/learner/Notifications.tsx(59,22): error TS2322: Type '"default"' is not assignable to type '"danger" | "outline" | "primary" | "secondary" | "success" | undefined'.
+src/pages/learner/Profile.tsx(5,32): error TS6133: 'Star' is declared but its value is never read.
+src/pages/learner/Profile.tsx(143,37): error TS2304: Cannot find name 'cn'.
+src/pages/learner/Profile.tsx(148,39): error TS2304: Cannot find name 'cn'.
+src/pages/learner/Quizzes.tsx(57,16): error TS2503: Cannot find namespace 'NodeJS'.
+src/pages/public/About.tsx(4,37): error TS6133: 'Award' is declared but its value is never read.
+src/pages/public/Features.tsx(4,121): error TS6133: 'GraduationCap' is declared but its value is never read.
+src/pages/public/LandingPage.tsx(6,51): error TS6133: 'Database' is declared but its value is never read.
+src/pages/public/LandingPage.tsx(7,50): error TS6133: 'ChevronRight' is declared but its value is never read.
+src/pages/public/LandingPage.tsx(7,64): error TS6133: 'Check' is declared but its value is never read.
