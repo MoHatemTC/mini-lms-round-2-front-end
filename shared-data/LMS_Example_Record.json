@@ -1,0 +1,51 @@
+{
+  "status": "success",
+  "data": {
+    "learner_id": 4501,
+    "meta_info": {
+      "total_finished_items": 2,
+      "total_certificates_earned": 1
+    },
+    "finished_items": [
+      {
+        "item_id": "lesson_html_01",
+        "completed_at": "2026-07-13T10:00:00Z"
+      },
+      {
+        "item_id": "lesson_html_02",
+        "completed_at": "2026-07-13T11:30:00Z"
+      }
+    ],
+    "quiz_attempts": [
+      {
+        "quiz_id": "quiz_html_basics",
+        "score": 90,
+        "is_passed": true,
+        "attempted_at": "2026-07-13T12:00:00Z"
+      }
+    ],
+    "task_submissions": [
+      {
+        "task_id": "task_git_setup",
+        "submission_url": "https://github.com/learner4501/repo",
+        "status": "approved",
+        "submitted_at": "2026-07-13T11:45:00Z"
+      }
+    ],
+    "reviews": [
+      {
+        "item_id": "course_frontend_basics",
+        "rating": 5,
+        "comment": "The explanation is excellent and very clear!",
+        "created_at": "2026-07-13T12:10:00Z"
+      }
+    ],
+    "achievements": [
+      {
+        "achievement_type": "Certificate",
+        "title": "HTML & Git Basics Certificate",
+        "issued_at": "2026-07-13T12:05:00Z"
+      }
+    ]
+  }
+}
