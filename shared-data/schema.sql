@@ -85,24 +85,31 @@ CREATE INDEX IF NOT EXISTS idx_achievements_learner_id ON achievements(learner_i
 -- 🔒 DATABASE SECURITY & ISOLATION (Row-Level Security - RLS)
 -- =========================================================================
 
--- Enable RLS on all sensitive tables
+-- Enable and FORCE RLS on all sensitive tables (Force applies RLS even to the table Owner/Superuser)
 ALTER TABLE finished_items ENABLE ROW LEVEL SECURITY;
+ALTER TABLE finished_items FORCE ROW LEVEL SECURITY;
+
 ALTER TABLE quiz_attempts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE quiz_attempts FORCE ROW LEVEL SECURITY;
+
 ALTER TABLE task_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE task_submissions FORCE ROW LEVEL SECURITY;
+
 ALTER TABLE reviews ENABLE ROW LEVEL SECURITY;
+ALTER TABLE reviews FORCE ROW LEVEL SECURITY;
+
 ALTER TABLE achievements ENABLE ROW LEVEL SECURITY;
+ALTER TABLE achievements FORCE ROW LEVEL SECURITY;
 
 -- Helper function to safely get authenticated user context from database session
 CREATE OR REPLACE FUNCTION get_current_learner_id() 
 RETURNS INTEGER AS $$
 BEGIN
-    -- Returns NULL if context is not set, preventing unauthenticated access
     RETURN NULLIF(current_setting('app.current_learner_id', true), '')::integer;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create ALL-CRUD Isolation Policies (Covers SELECT, INSERT, UPDATE, DELETE)
--- Since we use (learner_id = get_current_learner_id()), unauthenticated requests (NULL) naturally fail.
 DO $$ 
 BEGIN
     -- finished_items policy
