@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/MoHatemTC/mini-lms-round-2-front-end/issues"
   },
-  "homepage": "https://github.com/MoHatemTC/mini-lms-round-2-front-end#readme",
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
     "clsx": "^2.1.1",
