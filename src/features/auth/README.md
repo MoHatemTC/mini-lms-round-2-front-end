@@ -1,6 +1,6 @@
-﻿# Auth Feature
+# Auth Feature
 
-Handles user authentication including login, registration, password reset, email verification, and session management.
+Handles user authentication including login and session management.
 
 ## Structure
 
