@@ -1,12 +1,11 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import CourseFilters from '../components/AdminCourses/CourseFilters';
 import CourseTable from '../components/AdminCourses/CourseTable';
-import CourseForm from '../components/CreateCourse/CourseForm';
 import { Card } from '../../../components/ui/Card';
 
 export default function AdminCourses() {
-  const [isCreating, setIsCreating] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [trackFilter, setTrackFilter] = useState('All');
   const [levelFilter, setLevelFilter] = useState('All');
@@ -49,28 +48,19 @@ export default function AdminCourses() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-text-primary">
-            {isCreating ? 'Create New Course' : 'Courses Dashboard'}
+            Courses Dashboard
           </h1>
           <p className="text-text-secondary mt-1">
-            {isCreating ? 'Draft the details of a new course.' : 'Manage and organize all platform courses.'}
+            Manage and organize all platform courses.
           </p>
         </div>
         
-        {!isCreating ? (
-          <button 
-            onClick={() => setIsCreating(true)}
-            className="btn-gradient text-white px-5 py-2.5 rounded-xl font-medium shadow-md shadow-primary/20 flex items-center gap-2"
-          >
-            <Plus className="w-5 h-5" /> Create Course
-          </button>
-        ) : (
-          <button 
-            onClick={() => setIsCreating(false)}
-            className="px-5 py-2.5 rounded-xl font-medium border border-border text-text-secondary hover:bg-muted transition-colors"
-          >
-            Back to Courses
-          </button>
-        )}
+        <Link 
+          to="/admin/courses/create"
+          className="btn-gradient text-white px-5 py-2.5 rounded-xl font-medium shadow-md shadow-primary/20 flex items-center gap-2"
+        >
+          <Plus className="w-5 h-5" /> Create Course
+        </Link>
       </div>
 
       {/* Main Content Area */}
@@ -89,27 +79,21 @@ export default function AdminCourses() {
         </div>
       )}
 
-      {isCreating ? (
-        <div className="animate-slide-up">
-          <CourseForm onClose={() => setIsCreating(false)} />
-        </div>
-      ) : (
-        <Card className="shadow-soft animate-slide-up overflow-hidden">
-          <CourseFilters 
-            searchQuery={searchQuery} setSearchQuery={setSearchQuery}
-            trackFilter={trackFilter} setTrackFilter={setTrackFilter}
-            levelFilter={levelFilter} setLevelFilter={setLevelFilter}
-            statusFilter={statusFilter} setStatusFilter={setStatusFilter}
+      <Card className="shadow-soft animate-slide-up overflow-hidden">
+        <CourseFilters 
+          searchQuery={searchQuery} setSearchQuery={setSearchQuery}
+          trackFilter={trackFilter} setTrackFilter={setTrackFilter}
+          levelFilter={levelFilter} setLevelFilter={setLevelFilter}
+          statusFilter={statusFilter} setStatusFilter={setStatusFilter}
+        />
+        <div className="border-t border-gray-100">
+          <CourseTable 
+            courses={filteredCourses} 
+            isLoading={false} 
+            onDelete={handleDelete} 
           />
-          <div className="border-t border-gray-100">
-            <CourseTable 
-              courses={filteredCourses} 
-              isLoading={false} 
-              onDelete={handleDelete} 
-            />
-          </div>
-        </Card>
-      )}
+        </div>
+      </Card>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import LearnerLayout from '../layouts/LearnerLayout';
 const Login = React.lazy(() => import('../features/auth/pages/Login'));
 
 const AdminCourses = React.lazy(() => import('../features/courses/pages/AdminCourses'));
+const CreateCourse = React.lazy(() => import('../features/courses/pages/CreateCourse'));
 const LearnerCourses = React.lazy(() => import('../features/courses/pages/LearnerCourses'));
 
 const RootRedirect = () => {
@@ -59,6 +60,7 @@ const AppRoutes = () => {
           <Route element={<RoleRoute allowedRoles={['Admin']} />}>
             <Route element={<AdminLayout />}>
               <Route path="/admin/courses" element={<AdminCourses />} />
+              <Route path="/admin/courses/create" element={<CreateCourse />} />
             </Route>
           </Route>
 
