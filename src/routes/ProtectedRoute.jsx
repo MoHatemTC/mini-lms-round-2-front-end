@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsAuthenticated, selectLoading } from '../features/auth';
+import { selectIsAuthenticated, selectLoading } from '../store/authSelectors';
 
 const ProtectedRoute = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);

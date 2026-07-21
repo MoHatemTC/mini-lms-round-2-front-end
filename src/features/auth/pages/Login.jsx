@@ -6,7 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 
-import { login, selectLoading, selectError } from '../index';
+import { login } from '../../../store/authThunks';
+import { selectLoading, selectError } from '../../../store/authSelectors';
 import { Button } from '../../../components/ui/Button';
 import { Input } from '../../../components/ui/Input';
 import { Label } from '../../../components/ui/Label';

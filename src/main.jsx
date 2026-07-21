@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import App from "./App.jsx";
 import { injectStore, injectAuthActions } from "./services/axios.js";
-import { refreshAccessToken, logout } from "./features/auth/authThunks.js";
+import { refreshAccessToken, logout } from "./store/authThunks.js";
 import "./styles/index.css"
 
 // Inject store and auth actions into axios interceptors

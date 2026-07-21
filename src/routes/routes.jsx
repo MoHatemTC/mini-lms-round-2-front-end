@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsAuthenticated, selectUser } from '../features/auth';
+import { selectIsAuthenticated, selectUser } from '../store/authSelectors';
 
 import ProtectedRoute from './ProtectedRoute';
 import RoleRoute from './RoleRoute';

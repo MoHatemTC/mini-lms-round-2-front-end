@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../features/auth';
+import { selectUser } from '../store/authSelectors';
 
 const RoleRoute = ({ allowedRoles }) => {
   const user = useSelector(selectUser);

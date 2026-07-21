@@ -1,15 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, refreshAccessToken, logout } from './authThunks';
+import {  login, refreshAccessToken, logout  } from './authThunks';
 
 const initialState = {
-  user: {
-    id: 1,
-    name: 'Mock Admin',
-    email: 'admin@lms.local',
-    role: 'Admin'
-  },
-  accessToken: 'mock_token_123',
-  isAuthenticated: true,
+  user: null,
+  accessToken: null,
+  isAuthenticated: false,
   loading: false,
   error: null,
 };
@@ -49,8 +44,8 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
-        // state.user = action.payload.user;
-        // state.accessToken = action.payload.accessToken;
+        state.user = action.payload.user;
+        state.accessToken = action.payload.accessToken;
         state.isAuthenticated = true;
         state.error = null;
       })

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../authThunks';
-import { selectLoading, selectError } from '../index';
+import { logout } from '../../../store/authThunks';
+import { selectLoading, selectError } from '../../../store/authSelectors';
 
 const LogoutButton = () => {
   const dispatch = useDispatch();

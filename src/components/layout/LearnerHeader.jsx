@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../features/auth';
+import { selectUser } from '../../store/authSelectors';
 import {
   Menu,
   Search,

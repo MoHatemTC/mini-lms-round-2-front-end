@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
-import { logout } from "../../features/auth";
+import { logout } from '../../store/authThunks';
 import {
   LayoutDashboard,
   PlayCircle,

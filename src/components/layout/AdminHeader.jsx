@@ -8,7 +8,8 @@ import {
 } from 'lucide-react';
 import { Avatar } from '../../components/ui/Avatar';
 import { cn } from '../../lib/utils';
-import { selectUser, logout } from '../../features/auth';
+import { selectUser } from '../../store/authSelectors';
+import { logout } from '../../store/authThunks';
 
 export function AdminHeader({ setIsMobileOpen, isCollapsed }) {
   const location = useLocation();

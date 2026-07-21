@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Navigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectUser, selectIsAuthenticated } from '../features/auth';
+import { selectUser, selectIsAuthenticated } from '../store/authSelectors';
 import { ArrowLeft } from 'lucide-react';
 
 const AuthLayout = () => {

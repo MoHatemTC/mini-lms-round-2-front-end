@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { refreshAccessToken, selectIsAuthenticated } from '../features/auth';
+import { refreshAccessToken } from '../store/authThunks';
+import { selectIsAuthenticated } from '../store/authSelectors';
 
 export const useAuthInit = () => {
   const dispatch = useDispatch();

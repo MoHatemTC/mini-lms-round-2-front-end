@@ -10,7 +10,7 @@ import {
   GraduationCap, ChevronsUpDown
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { logout } from '../../features/auth';
+import { logout } from '../../store/authThunks';
 
 const navigation = [
   { group: 'Overview', items: [
