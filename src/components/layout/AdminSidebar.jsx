@@ -13,31 +13,8 @@ import { cn } from '../../lib/utils';
 import { logout } from '../../store/authThunks';
 
 const navigation = [
-  { group: 'Overview', items: [
-    { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
-    { name: 'Reports', href: '/admin/reports', icon: FileText },
-  ]},
   { group: 'Content', items: [
     { name: 'Courses', href: '/admin/courses', icon: BookOpen },
-    { name: 'Categories', href: '/admin/categories', icon: Tags },
-    { name: 'Lessons', href: '/admin/lessons', icon: PlaySquare },
-    { name: 'Quiz Builder', href: '/admin/quizzes', icon: FileQuestion },
-    { name: 'Assignments', href: '/admin/assignments', icon: ClipboardCheck },
-    { name: 'Certificates', href: '/admin/certificates', icon: Award },
-  ]},
-  { group: 'Management', items: [
-    { name: 'Users', href: '/admin/users', icon: Users },
-    { name: 'Roles & Perms', href: '/admin/roles', icon: Shield },
-    { name: 'Reviews', href: '/admin/reviews', icon: MessageSquare },
-    { name: 'Calendar', href: '/admin/calendar', icon: Calendar },
-  ]},
-  { group: 'System', items: [
-    { name: 'Notifications', href: '/admin/notifications', icon: Bell },
-    { name: 'Settings', href: '/admin/settings', icon: Settings },
-    { name: 'Profile', href: '/admin/profile', icon: Users },
-    { name: 'Media', href: '/admin/files', icon: FileText },
-    { name: 'Audit Logs', href: '/admin/audit-logs', icon: ClipboardCheck },
   ]}
 ];
 

@@ -30,47 +30,9 @@ const navigation = [
   {
     group: "Learning",
     items: [
-      { name: "Dashboard", href: "/learner/dashboard", icon: LayoutDashboard },
-      {
-        name: "Continue Learning",
-        href: "/learner/courses/1/play",
-        icon: PlayCircle,
-      },
       { name: "My Courses", href: "/learner/courses", icon: BookOpen },
-      { name: "Learning Paths", href: "/learner/paths", icon: Map },
-      { name: "Categories", href: "/learner/categories", icon: Tags },
     ],
-  },
-  {
-    group: "Assessments & Rewards",
-    items: [
-      {
-        name: "Assignments",
-        href: "/learner/assignments",
-        icon: ClipboardCheck,
-      },
-      { name: "Quizzes", href: "/learner/quizzes", icon: FileQuestion },
-      { name: "Certificates", href: "/learner/certificates", icon: Award },
-      { name: "Achievements", href: "/learner/achievements", icon: Trophy },
-    ],
-  },
-  {
-    group: "My Library",
-    items: [
-      { name: "Bookmarks", href: "/learner/bookmarks", icon: Bookmark },
-      { name: "Downloads", href: "/learner/downloads", icon: DownloadCloud },
-      { name: "Calendar", href: "/learner/calendar", icon: Calendar },
-    ],
-  },
-  {
-    group: "Account",
-    items: [
-      { name: "Notifications", href: "/learner/notifications", icon: Bell },
-      { name: "Profile", href: "/learner/profile", icon: User },
-      { name: "Settings", href: "/learner/settings", icon: Settings },
-      { name: "Help Center", href: "/learner/help", icon: HelpCircle },
-    ],
-  },
+  }
 ];
 
 export function LearnerSidebar({
@@ -106,24 +68,6 @@ export function LearnerSidebar({
           )}
         </Link>
       </div>
-
-      {/* Daily Progress / Streak (Mock) */}
-      {!isCollapsed && (
-        <div className="px-6 py-5 border-b border-white/10">
-          <div className="flex justify-between items-end mb-2">
-            <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">
-              Weekly Goal
-            </span>
-            <span className="text-xs font-bold text-teal-400">3/5 Days</span>
-          </div>
-          <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-teal-400 to-emerald-500 rounded-full"
-              style={{ width: "60%" }}
-            />
-          </div>
-        </div>
-      )}
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto scrollbar-hide py-6 px-3 space-y-8">
