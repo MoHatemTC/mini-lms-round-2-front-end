@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium styling tokens & dynamic background layout */
+@layer base {
+  body {
+    background-color: #030712; /* deep slate-950 */
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Frosted glass utility class for widgets and panels */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 12px 32px -8px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
