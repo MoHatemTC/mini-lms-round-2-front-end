@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../store/authSelectors';
 import { quizService } from '../services/quizService';
 import AdminQuizBuilder from '../components/AdminQuizBuilder';
 import QuizLockBanner from '../components/QuizLockBanner';
@@ -7,9 +10,26 @@ import QuizResultModal from '../components/QuizResultModal';
 import { BookOpen, User, Send, CheckCircle, RotateCcw, AlertTriangle } from 'lucide-react';
 
 export default function QuizPage({ isAdmin }) {
+  const { id } = useParams();
+  const currentUser = useSelector(selectUser);
+  const authenticatedLearnerId = currentUser?.id || 1;
+
   // Simulator Configurations for Testing
-  const [learnerId, setLearnerId] = useState(1);
-  const [quizId, setQuizId] = useState('quiz_html_01');
+  const [learnerId, setLearnerId] = useState(authenticatedLearnerId);
+  const [quizId, setQuizId] = useState(id || 'quiz_html_01');
+
+  // Update states dynamically if routing parameters or authenticated user changes
+  useEffect(() => {
+    if (id) {
+      setQuizId(id);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (authenticatedLearnerId) {
+      setLearnerId(authenticatedLearnerId);
+    }
+  }, [authenticatedLearnerId]);
 
   // Quiz States
   const [quiz, setQuiz] = useState(null);
@@ -102,7 +122,7 @@ export default function QuizPage({ isAdmin }) {
     try {
       const answersPayload = Object.keys(selectedAnswers).map(qId => ({
         question_id: parseInt(qId, 10),
-        choice_id: selectedAnswers[qId],
+        choice_id: parseInt(selectedAnswers[qId], 10),
       }));
 
       const response = await quizService.submitQuiz(quizId, learnerId, answersPayload);
@@ -131,45 +151,47 @@ export default function QuizPage({ isAdmin }) {
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
       
-      {/* Simulation Controls Sidebar/Widget */}
-      <div className="glass-panel rounded-2xl p-6 border border-indigo-500/10 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 className="font-outfit font-bold text-white text-base">Simulation Sandbox</h3>
-          <p className="text-xs text-slate-400">Change learner IDs to test Row-Level Security (RLS) policies.</p>
-        </div>
-        
-        <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
-          <div className="flex items-center gap-2 bg-slate-950 border border-slate-900 px-3 py-1.5 rounded-xl flex-grow md:flex-grow-0">
-            <User size={14} className="text-slate-500" />
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Learner ID:</label>
-            <input
-              type="number"
-              min="1"
-              value={learnerId}
-              onChange={(e) => setLearnerId(parseInt(e.target.value, 10) || 1)}
-              className="bg-transparent border-none text-white focus:outline-none w-16 text-sm font-semibold text-center"
-            />
+      {/* Simulation Controls Sidebar/Widget - Only visible in Local Development Mode */}
+      {import.meta.env.DEV && (
+        <div className="glass-panel rounded-2xl p-6 border border-indigo-500/10 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="font-outfit font-bold text-white text-base">Simulation Sandbox</h3>
+            <p className="text-xs text-slate-400">Change learner IDs to test Row-Level Security (RLS) policies.</p>
           </div>
+          
+          <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
+            <div className="flex items-center gap-2 bg-slate-950 border border-slate-900 px-3 py-1.5 rounded-xl flex-grow md:flex-grow-0">
+              <User size={14} className="text-slate-500" />
+              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Learner ID:</label>
+              <input
+                type="number"
+                min="1"
+                value={learnerId}
+                onChange={(e) => setLearnerId(parseInt(e.target.value, 10) || 1)}
+                className="bg-transparent border-none text-white focus:outline-none w-16 text-sm font-semibold text-center"
+              />
+            </div>
 
-          <div className="flex items-center gap-2 bg-slate-950 border border-slate-900 px-3 py-1.5 rounded-xl flex-grow md:flex-grow-0">
-            <BookOpen size={14} className="text-slate-500" />
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quiz ID:</label>
-            <input
-              type="text"
-              value={quizId}
-              onChange={(e) => setQuizId(e.target.value)}
-              className="bg-transparent border-none text-white focus:outline-none w-28 text-sm font-semibold text-center"
-            />
+            <div className="flex items-center gap-2 bg-slate-950 border border-slate-900 px-3 py-1.5 rounded-xl flex-grow md:flex-grow-0">
+              <BookOpen size={14} className="text-slate-500" />
+              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quiz ID:</label>
+              <input
+                type="text"
+                value={quizId}
+                onChange={(e) => setQuizId(e.target.value)}
+                className="bg-transparent border-none text-white focus:outline-none w-28 text-sm font-semibold text-center"
+              />
+            </div>
+
+            <button
+              onClick={loadQuizData}
+              className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 rounded-xl text-xs font-bold transition-all border border-indigo-500/20 hover:border-indigo-500/40"
+            >
+              Reload State
+            </button>
           </div>
-
-          <button
-            onClick={loadQuizData}
-            className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 rounded-xl text-xs font-bold transition-all border border-indigo-500/20 hover:border-indigo-500/40"
-          >
-            Reload State
-          </button>
         </div>
-      </div>
+      )}
 
       {loading ? (
         <div className="py-20 text-center space-y-3">
