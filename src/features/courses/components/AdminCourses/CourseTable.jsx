@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router'; 
+import { Link } from 'react-router-dom';
 import CourseStatusBadge from '../Shared/CourseStatusBadge';
 
-const CourseTable = ({ courses, isLoading, onDelete }) => {
+const CourseTable = ({ courses, isLoading, onDelete, onPublish }) => {
   if (isLoading) {
     return (
       <div className="w-full overflow-hidden">
@@ -73,6 +73,14 @@ const CourseTable = ({ courses, isLoading, onDelete }) => {
                 <div className="flex items-center justify-end space-x-4 opacity-100 sm:opacity-80 group-hover:opacity-100 transition-opacity">
                   <button disabled className="text-gray-400 cursor-not-allowed flex items-center gap-1 focus-visible:outline-none rounded px-1" title="View requires backend integration" aria-label={`View ${course.title} (Disabled)`}>View</button>
                   <button disabled className="text-gray-400 cursor-not-allowed flex items-center gap-1 focus-visible:outline-none rounded px-1" title="Edit requires backend integration" aria-label={`Edit ${course.title} (Disabled)`}>Edit</button>
+                  <Link 
+                    to={`/admin/courses/${course.id}/materials/upload`}
+                    className="text-primary hover:text-primary-hover transition-colors font-medium flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded px-1"
+                    title="Upload & manage course materials"
+                    aria-label={`Upload materials for ${course.title}`}
+                  >
+                    Materials
+                  </Link>
                   <button 
                     onClick={() => onDelete(course.id)} 
                     className="text-red-600 hover:text-red-900 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none rounded px-1"
@@ -80,14 +88,15 @@ const CourseTable = ({ courses, isLoading, onDelete }) => {
                   >
                     Delete
                   </button>
-                  <button 
-                    disabled
-                    className="text-gray-400 cursor-not-allowed flex items-center gap-1"
-                    title="Publishing requires backend integration"
-                    aria-label={`Publish ${course.title} (Disabled)`}
-                  >
-                    Publish
-                  </button>
+                  {course.status !== 'Published' && (
+                    <button 
+                      onClick={() => onPublish && onPublish(course)}
+                      className="text-primary hover:text-primary-hover transition-colors font-medium flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded px-1"
+                      aria-label={`Publish ${course.title}`}
+                    >
+                      Publish
+                    </button>
+                  )}
                 </div>
               </td>
             </tr>

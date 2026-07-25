@@ -35,9 +35,8 @@ import axiosInstance from './axios';
  * @property {number} limit
  */
 
-// Centralize API endpoints. Use environment variables to avoid hardcoded URLs.
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
-const COURSES_ENDPOINT = `${API_BASE}/courses`;
+// Centralize API endpoints. Relative to axiosInstance.baseURL.
+const COURSES_ENDPOINT = '/courses';
 
 /**
  * Reusable error handler for API requests
@@ -45,10 +44,14 @@ const COURSES_ENDPOINT = `${API_BASE}/courses`;
  * @returns {Object} Standardized error object
  */
 export const handleApiError = (error) => {
-  // TODO: Connect to backend error response schema
+  // Extracts structured error messages from backend API response schema
   if (error.response) {
+    let msg = error.response.data?.message || 'An error occurred on the server.';
+    if (error.response.data?.errors) {
+      msg = Object.values(error.response.data.errors).join(', ');
+    }
     return {
-      message: error.response.data?.message || 'An error occurred on the server.',
+      message: msg,
       status: error.response.status,
       errors: error.response.data?.errors || null
     };
@@ -61,8 +64,7 @@ export const handleApiError = (error) => {
 
 export const courseService = {
   /**
-   * Fetch all courses (Admin list)
-   * TODO: Connect to GET /api/courses
+   * Fetch all courses (Admin list) via GET /courses
    * @param {Object} params - Query filters (page, limit, search, track, level, status)
    * @returns {Promise<PaginatedCourseResponse>}
    */
@@ -76,8 +78,7 @@ export const courseService = {
   },
 
   /**
-   * Get a single course by ID
-   * TODO: Connect to GET /api/courses/:id
+   * Get a single course by ID via GET /courses/:id
    * @param {string} id 
    * @returns {Promise<CourseResponse>}
    */
@@ -91,8 +92,7 @@ export const courseService = {
   },
 
   /**
-   * Create a new course
-   * TODO: Connect to POST /api/courses
+   * Create a new course via POST /courses
    * @param {CourseRequest} courseData 
    * @returns {Promise<CourseResponse>}
    */
@@ -106,8 +106,7 @@ export const courseService = {
   },
 
   /**
-   * Update an existing course
-   * TODO: Connect to PUT or PATCH /api/courses/:id
+   * Update an existing course via PUT /courses/:id
    * @param {string} id 
    * @param {Partial<CourseRequest>} courseData 
    * @returns {Promise<CourseResponse>}
@@ -122,8 +121,7 @@ export const courseService = {
   },
 
   /**
-   * Delete a course
-   * TODO: Connect to DELETE /api/courses/:id
+   * Delete a course via DELETE /courses/:id
    * @param {string} id 
    * @returns {Promise<void>}
    */
@@ -137,17 +135,22 @@ export const courseService = {
   },
 
   /**
-   * Reusable Upload Handler for attaching files to a course
-   * TODO: Connect to POST /api/courses/:id/upload
+   * Reusable Upload Handler for attaching files to a course via POST /courses/:id/files
    * @param {string} courseId 
    * @param {File} file 
    * @param {Function} onUploadProgress - Callback for tracking Axios progress events
    * @returns {Promise<any>}
    */
-  uploadCourseFile: async (courseId, file, onUploadProgress) => {
+  uploadCourseFile: async (courseId, file, metadata, onUploadProgress) => {
     try {
       const formData = new FormData();
       formData.append('files', file); // Backend expects 'files' array field
+      
+      if (metadata) {
+        Object.keys(metadata).forEach(key => {
+          formData.append(key, metadata[key]);
+        });
+      }
       
       const response = await axiosInstance.post(`${COURSES_ENDPOINT}/${courseId}/files`, formData, {
         headers: {
@@ -162,8 +165,7 @@ export const courseService = {
   },
   
   /**
-   * Delete an uploaded file
-   * TODO: Connect to DELETE /api/courses/:id/files/:fileId
+   * Delete an uploaded file via DELETE /courses/:id/files/:fileId
    * @param {string} courseId 
    * @param {string} fileId 
    * @returns {Promise<void>}
@@ -171,6 +173,35 @@ export const courseService = {
   deleteCourseFile: async (courseId, fileId) => {
     try {
       const response = await axiosInstance.delete(`${COURSES_ENDPOINT}/${courseId}/files/${fileId}`);
+      return response.data;
+    } catch (error) {
+      throw handleApiError(error);
+    }
+  },
+
+  /**
+   * Update order of course materials via PUT /courses/:id/files/reorder
+   * @param {string} courseId 
+   * @param {string[]} materialIds - Array of ordered material IDs
+   * @returns {Promise<any>}
+   */
+  updateMaterialOrder: async (courseId, materialIds) => {
+    try {
+      const response = await axiosInstance.put(`${COURSES_ENDPOINT}/${courseId}/files/reorder`, { materialIds });
+      return response.data;
+    } catch (error) {
+      throw handleApiError(error);
+    }
+  },
+
+  /**
+   * Publish a course via PUT /courses/:id/publish
+   * @param {string} courseId 
+   * @returns {Promise<any>}
+   */
+  publishCourse: async (courseId) => {
+    try {
+      const response = await axiosInstance.put(`${COURSES_ENDPOINT}/${courseId}/publish`);
       return response.data;
     } catch (error) {
       throw handleApiError(error);
