@@ -4,6 +4,13 @@ const Toast = ({ toast, onDismiss }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onDismiss();
+    }, 300); // match Tailwind duration-300
+  };
+
   useEffect(() => {
     // Trigger entrance animation safely after mount
     requestAnimationFrame(() => setIsMounted(true));
@@ -14,13 +21,6 @@ const Toast = ({ toast, onDismiss }) => {
 
     return () => clearTimeout(timer);
   }, [toast.duration]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onDismiss();
-    }, 300); // match Tailwind duration-300
-  };
 
   const getIcon = () => {
     if (toast.type === 'success') {

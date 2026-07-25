@@ -1,9 +1,12 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CourseFilters from '../components/AdminCourses/CourseFilters';
 import CourseTable from '../components/AdminCourses/CourseTable';
+import PublishCourseModal from '../components/AdminCourses/PublishCourseModal';
 import { Card } from '../../../components/ui/Card';
+import { Toast } from '../../../components/ui/Toast';
+import courseService from '../../../services/courseService';
 
 export default function AdminCourses() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,8 +14,11 @@ export default function AdminCourses() {
   const [levelFilter, setLevelFilter] = useState('All');
   const [statusFilter, setStatusFilter] = useState('All');
   const [error, setError] = useState(null);
+  
+  const [publishModalOpen, setPublishModalOpen] = useState(false);
+  const [courseToPublish, setCourseToPublish] = useState(null);
+  const [toastMessage, setToastMessage] = useState({ type: '', text: '' });
 
-  // Mocking course list data until connected to backend API
   const [courses, setCourses] = useState([
     {
       id: '1',
@@ -22,14 +28,60 @@ export default function AdminCourses() {
       duration: '8 Weeks',
       status: 'Published',
       createdAt: '2026-07-15'
+    },
+    {
+      id: '2',
+      title: 'Introduction to GraphQL',
+      track: 'Backend',
+      level: 'Beginner',
+      duration: '4 Weeks',
+      status: 'Draft',
+      createdAt: '2026-07-20'
     }
   ]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchCourses = async () => {
+      setIsLoading(true);
+      try {
+        const response = await courseService.getAllCourses();
+        if (isMounted && response?.data) {
+          // If the backend returns data, use it over the mocks
+          setCourses(Array.isArray(response.data) ? response.data : []);
+        } else if (isMounted && Array.isArray(response)) {
+          setCourses(response);
+        }
+      } catch (err) {
+        // Silently fallback to mock data if backend isn't ready
+        console.warn('Backend not ready, using mock courses data.');
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    };
+    fetchCourses();
+    return () => { isMounted = false; };
+  }, []);
 
   const handleDelete = useCallback((id) => {
     // Prevent default event to avoid navigation
     if (confirm("Are you sure you want to delete this course?")) {
       setCourses(prev => prev.filter(course => course.id !== id));
     }
+  }, []);
+
+  const handleOpenPublishModal = useCallback((course) => {
+    setCourseToPublish(course);
+    setPublishModalOpen(true);
+  }, []);
+
+  const handlePublishSuccess = useCallback((id) => {
+    setCourses(prev => prev.map(course => 
+      course.id === id ? { ...course, status: 'Published' } : course
+    ));
+    setToastMessage({ type: 'success', text: 'Course published successfully!' });
+    setTimeout(() => setToastMessage({ type: '', text: '' }), 3000);
   }, []);
 
   const filteredCourses = useMemo(() => {
@@ -89,11 +141,27 @@ export default function AdminCourses() {
         <div className="border-t border-gray-100">
           <CourseTable 
             courses={filteredCourses} 
-            isLoading={false} 
-            onDelete={handleDelete} 
+            isLoading={isLoading} 
+            onDelete={handleDelete}
+            onPublish={handleOpenPublishModal}
           />
         </div>
       </Card>
+
+      <PublishCourseModal 
+        isOpen={publishModalOpen}
+        onClose={() => {
+          setPublishModalOpen(false);
+          setCourseToPublish(null);
+        }}
+        course={courseToPublish}
+        onPublishSuccess={handlePublishSuccess}
+      />
+      
+      <Toast 
+        message={toastMessage} 
+        onClose={() => setToastMessage({ type: '', text: '' })} 
+      />
     </div>
   );
 }

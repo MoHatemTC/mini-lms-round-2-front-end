@@ -15,6 +15,7 @@ const Login = React.lazy(() => import('../features/auth/pages/Login'));
 
 const AdminCourses = React.lazy(() => import('../features/courses/pages/AdminCourses'));
 const CreateCourse = React.lazy(() => import('../features/courses/pages/CreateCourse'));
+const UploadMaterial = React.lazy(() => import('../features/courses/pages/UploadMaterial'));
 const LearnerCourses = React.lazy(() => import('../features/courses/pages/LearnerCourses'));
 const QuizPage = React.lazy(() => import('../features/quizzes/pages/QuizPage'));
 
@@ -62,6 +63,7 @@ const AppRoutes = () => {
             <Route element={<AdminLayout />}>
               <Route path="/admin/courses" element={<AdminCourses />} />
               <Route path="/admin/courses/create" element={<CreateCourse />} />
+              <Route path="/admin/courses/:courseId/materials/upload" element={<UploadMaterial />} />
               <Route path="/admin/quizzes/create" element={<QuizPage isAdmin={true} />} />
             </Route>
           </Route>
