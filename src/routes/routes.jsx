@@ -10,6 +10,7 @@ import RoleRoute from './RoleRoute';
 import AuthLayout from '../layouts/AuthLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import LearnerLayout from '../layouts/LearnerLayout';
+import EmbedLayout from '../layouts/EmbedLayout';
 
 const Login = React.lazy(() => import('../features/auth/pages/Login'));
 
@@ -18,6 +19,8 @@ const CreateCourse = React.lazy(() => import('../features/courses/pages/CreateCo
 const UploadMaterial = React.lazy(() => import('../features/courses/pages/UploadMaterial'));
 const LearnerCourses = React.lazy(() => import('../features/courses/pages/LearnerCourses'));
 const QuizPage = React.lazy(() => import('../features/quizzes/pages/QuizPage'));
+const CourseEmbed = React.lazy(() => import('../features/courses/pages/CourseEmbed'));
+const CertificateEmbed = React.lazy(() => import('../features/certificates/pages/CertificateEmbed'));
 
 const RootRedirect = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -53,6 +56,16 @@ const AppRoutes = () => {
               <p className="text-text-secondary">You do not have permission to access this page.</p>
             </div>
           } />
+        </Route>
+
+        {/* Embed Routes */}
+        <Route element={<EmbedLayout />}>
+          <Route path="/embed/courses" element={<CourseEmbed />} />
+          <Route path="/embed/courses/:courseId" element={<CourseEmbed />} />
+          <Route path="/courses/:courseId/embed" element={<CourseEmbed />} />
+          <Route path="/embed/certificates" element={<CertificateEmbed />} />
+          <Route path="/embed/certificates/:certificateId" element={<CertificateEmbed />} />
+          <Route path="/certificates/:certificateId/embed" element={<CertificateEmbed />} />
         </Route>
 
         {/* Private Routes */}
