@@ -81,3 +81,35 @@ export const DraftSavedState = ({ onAction, onSecondaryAction }) => (
     }
   />
 );
+
+// 6. No Available Courses (Catalog / Learner List)
+export const NoAvailableCoursesState = ({ onAction }) => (
+  <EmptyState
+    title="No courses available yet."
+    description="There are currently no courses available for enrollment in the catalog. Please check back later or refresh the page."
+    actionText={onAction ? "Refresh Catalog" : undefined}
+    onAction={onAction}
+    icon={
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+      </svg>
+    }
+  />
+);
+
+// 7. No Filter Results (Catalog / Learner List)
+export const NoFilterResultsState = ({ onReset }) => (
+  <EmptyState
+    title="No courses match your current filters."
+    description="We couldn't find any courses matching your selected filter criteria. Try resetting your filters to view all available courses."
+    actionText="Reset All Filters"
+    onAction={onReset}
+    icon={
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+      </svg>
+    }
+  />
+);
+
+

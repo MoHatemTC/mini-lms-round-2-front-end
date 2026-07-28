@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import CourseStatusBadge from '../Shared/CourseStatusBadge';
 
-const CourseTable = ({ courses, isLoading, onDelete, onPublish }) => {
+const CourseTable = ({ courses, isLoading, onDelete, onPublish, onUnpublish }) => {
   if (isLoading) {
     return (
       <div className="w-full overflow-hidden">
@@ -88,13 +88,21 @@ const CourseTable = ({ courses, isLoading, onDelete, onPublish }) => {
                   >
                     Delete
                   </button>
-                  {course.status !== 'Published' && (
+                  {course.status !== 'Published' ? (
                     <button 
                       onClick={() => onPublish && onPublish(course)}
                       className="text-primary hover:text-primary-hover transition-colors font-medium flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded px-1"
                       aria-label={`Publish ${course.title}`}
                     >
                       Publish
+                    </button>
+                  ) : (
+                    <button 
+                      onClick={() => onUnpublish && onUnpublish(course)}
+                      className="text-amber-600 hover:text-amber-900 transition-colors font-medium flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none rounded px-1"
+                      aria-label={`Unpublish ${course.title}`}
+                    >
+                      Unpublish
                     </button>
                   )}
                 </div>
