@@ -10,6 +10,7 @@ import RoleRoute from './RoleRoute';
 import AuthLayout from '../layouts/AuthLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import LearnerLayout from '../layouts/LearnerLayout';
+import EmbedLayout from '../layouts/EmbedLayout';
 
 const Login = React.lazy(() => import('../features/auth/pages/Login'));
 
@@ -17,7 +18,10 @@ const AdminCourses = React.lazy(() => import('../features/courses/pages/AdminCou
 const CreateCourse = React.lazy(() => import('../features/courses/pages/CreateCourse'));
 const UploadMaterial = React.lazy(() => import('../features/courses/pages/UploadMaterial'));
 const LearnerCourses = React.lazy(() => import('../features/courses/pages/LearnerCourses'));
+const CourseDetails = React.lazy(() => import('../features/courses/pages/CourseDetails'));
 const QuizPage = React.lazy(() => import('../features/quizzes/pages/QuizPage'));
+const CourseEmbed = React.lazy(() => import('../features/courses/pages/CourseEmbed'));
+const CertificateEmbed = React.lazy(() => import('../features/certificates/pages/CertificateEmbed'));
 
 const RootRedirect = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -55,6 +59,16 @@ const AppRoutes = () => {
           } />
         </Route>
 
+        {/* Embed Routes */}
+        <Route element={<EmbedLayout />}>
+          <Route path="/embed/courses" element={<CourseEmbed />} />
+          <Route path="/embed/courses/:courseId" element={<CourseEmbed />} />
+          <Route path="/courses/:courseId/embed" element={<CourseEmbed />} />
+          <Route path="/embed/certificates" element={<CertificateEmbed />} />
+          <Route path="/embed/certificates/:certificateId" element={<CertificateEmbed />} />
+          <Route path="/certificates/:certificateId/embed" element={<CertificateEmbed />} />
+        </Route>
+
         {/* Private Routes */}
         <Route element={<ProtectedRoute />}>
           
@@ -72,6 +86,7 @@ const AppRoutes = () => {
           <Route element={<RoleRoute allowedRoles={['Learner']} />}>
             <Route element={<LearnerLayout />}>
               <Route path="/learner/courses" element={<LearnerCourses />} />
+              <Route path="/learner/courses/:courseId" element={<CourseDetails />} />
               <Route path="/learner/quizzes/:id" element={<QuizPage isAdmin={false} />} />
             </Route>
           </Route>

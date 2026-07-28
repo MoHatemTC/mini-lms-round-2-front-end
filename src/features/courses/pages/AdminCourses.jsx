@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import CourseFilters from '../components/AdminCourses/CourseFilters';
 import CourseTable from '../components/AdminCourses/CourseTable';
 import PublishCourseModal from '../components/AdminCourses/PublishCourseModal';
+import UnpublishCourseModal from '../components/AdminCourses/UnpublishCourseModal';
 import { Card } from '../../../components/ui/Card';
 import { Toast } from '../../../components/ui/Toast';
 import courseService from '../../../services/courseService';
@@ -17,6 +18,8 @@ export default function AdminCourses() {
   
   const [publishModalOpen, setPublishModalOpen] = useState(false);
   const [courseToPublish, setCourseToPublish] = useState(null);
+  const [unpublishModalOpen, setUnpublishModalOpen] = useState(false);
+  const [courseToUnpublish, setCourseToUnpublish] = useState(null);
   const [toastMessage, setToastMessage] = useState({ type: '', text: '' });
 
   const [courses, setCourses] = useState([
@@ -41,28 +44,29 @@ export default function AdminCourses() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const fetchCourses = useCallback(async (isMounted = true) => {
+    setIsLoading(true);
+    try {
+      const response = await courseService.getAllCourses();
+      if (isMounted && response?.data) {
+        // If the backend returns data, use it over the mocks
+        setCourses(Array.isArray(response.data) ? response.data : []);
+      } else if (isMounted && Array.isArray(response)) {
+        setCourses(response);
+      }
+    } catch (err) {
+      // Silently fallback to mock data if backend isn't ready
+      console.warn('Backend not ready, using mock courses data.');
+    } finally {
+      if (isMounted) setIsLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     let isMounted = true;
-    const fetchCourses = async () => {
-      setIsLoading(true);
-      try {
-        const response = await courseService.getAllCourses();
-        if (isMounted && response?.data) {
-          // If the backend returns data, use it over the mocks
-          setCourses(Array.isArray(response.data) ? response.data : []);
-        } else if (isMounted && Array.isArray(response)) {
-          setCourses(response);
-        }
-      } catch (err) {
-        // Silently fallback to mock data if backend isn't ready
-        console.warn('Backend not ready, using mock courses data.');
-      } finally {
-        if (isMounted) setIsLoading(false);
-      }
-    };
-    fetchCourses();
+    fetchCourses(isMounted);
     return () => { isMounted = false; };
-  }, []);
+  }, [fetchCourses]);
 
   const handleDelete = useCallback((id) => {
     // Prevent default event to avoid navigation
@@ -83,6 +87,20 @@ export default function AdminCourses() {
     setToastMessage({ type: 'success', text: 'Course published successfully!' });
     setTimeout(() => setToastMessage({ type: '', text: '' }), 3000);
   }, []);
+
+  const handleOpenUnpublishModal = useCallback((course) => {
+    setCourseToUnpublish(course);
+    setUnpublishModalOpen(true);
+  }, []);
+
+  const handleUnpublishSuccess = useCallback((id, response) => {
+    setCourses(prev => prev.map(course => 
+      course.id === id ? { ...course, status: response?.course?.status || response?.status || 'Draft' } : course
+    ));
+    setToastMessage({ type: 'success', text: response?.message || 'Course unpublished successfully!' });
+    setTimeout(() => setToastMessage({ type: '', text: '' }), 3000);
+    fetchCourses(true);
+  }, [fetchCourses]);
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
@@ -144,6 +162,7 @@ export default function AdminCourses() {
             isLoading={isLoading} 
             onDelete={handleDelete}
             onPublish={handleOpenPublishModal}
+            onUnpublish={handleOpenUnpublishModal}
           />
         </div>
       </Card>
@@ -156,6 +175,16 @@ export default function AdminCourses() {
         }}
         course={courseToPublish}
         onPublishSuccess={handlePublishSuccess}
+      />
+
+      <UnpublishCourseModal 
+        isOpen={unpublishModalOpen}
+        onClose={() => {
+          setUnpublishModalOpen(false);
+          setCourseToUnpublish(null);
+        }}
+        course={courseToUnpublish}
+        onUnpublishSuccess={handleUnpublishSuccess}
       />
       
       <Toast 

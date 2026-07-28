@@ -206,6 +206,20 @@ export const courseService = {
     } catch (error) {
       throw handleApiError(error);
     }
+  },
+
+  /**
+   * Unpublish a course via PUT /courses/:id/unpublish
+   * @param {string} courseId 
+   * @returns {Promise<any>}
+   */
+  unpublishCourse: async (courseId) => {
+    try {
+      const response = await axiosInstance.put(`${COURSES_ENDPOINT}/${courseId}/unpublish`);
+      return response.data;
+    } catch (error) {
+      throw handleApiError(error);
+    }
   }
 };
 
