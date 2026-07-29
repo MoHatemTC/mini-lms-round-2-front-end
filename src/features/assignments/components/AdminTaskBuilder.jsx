@@ -13,7 +13,7 @@ export default function AdminTaskBuilder() {
   const [instructions, setInstructions] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [requiredQuizId, setRequiredQuizId] = useState('');
-  
+
   // Custom hand-in check lists
   const [requiredFiles, setRequiredFiles] = useState([]);
   const [requiredLinks, setRequiredLinks] = useState([]);
@@ -26,13 +26,13 @@ export default function AdminTaskBuilder() {
   const linkOptions = ['github', 'demo', 'evidence'];
 
   const toggleFileOption = (opt) => {
-    setRequiredFiles(prev => 
+    setRequiredFiles(prev =>
       prev.includes(opt) ? prev.filter(item => item !== opt) : [...prev, opt]
     );
   };
 
   const toggleLinkOption = (opt) => {
-    setRequiredLinks(prev => 
+    setRequiredLinks(prev =>
       prev.includes(opt) ? prev.filter(item => item !== opt) : [...prev, opt]
     );
   };
@@ -66,7 +66,7 @@ export default function AdminTaskBuilder() {
         type: 'success',
         message: result.message || 'Task created successfully!'
       });
-      
+
       // Clear forms
       setTaskId('');
       setTitle('');
@@ -87,7 +87,7 @@ export default function AdminTaskBuilder() {
 
   return (
     <div className="glass-panel rounded-3xl p-8 border border-white/10 shadow-2xl max-w-2xl mx-auto animate-fade-in">
-      
+
       {/* Title */}
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-indigo-500/10 rounded-2xl text-indigo-400">
@@ -101,7 +101,7 @@ export default function AdminTaskBuilder() {
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
-        
+
         {/* Task ID & Title */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
@@ -169,7 +169,7 @@ export default function AdminTaskBuilder() {
 
         {/* Hand-in Rules Selection */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
+
           {/* File Formats checklist */}
           <div className="space-y-3">
             <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">

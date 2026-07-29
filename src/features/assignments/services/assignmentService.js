@@ -25,7 +25,7 @@ const handleApiError = (error) => {
 export const assignmentService = {
   /**
    * Admin: Create or update a task
-   * @param {Object} taskData 
+   * @param {Object} taskData
    * @returns {Promise<any>}
    */
   createTask: async (taskData) => {
@@ -39,7 +39,7 @@ export const assignmentService = {
 
   /**
    * Learner: Fetch task details, locking state, and submission metadata
-   * @param {string} taskId 
+   * @param {string} taskId
    * @returns {Promise<any>}
    */
   fetchTask: async (taskId) => {
@@ -53,7 +53,7 @@ export const assignmentService = {
 
   /**
    * Learner: Submit task files and links
-   * @param {string} taskId 
+   * @param {string} taskId
    * @param {Object} submissionData - { files: [...], links: [...] }
    * @returns {Promise<any>}
    */
@@ -68,7 +68,7 @@ export const assignmentService = {
 
   /**
    * Learner: Upload a file to the general Storage module
-   * @param {File} file 
+   * @param {File} file
    * @returns {Promise<any>}
    */
   uploadFile: async (file) => {

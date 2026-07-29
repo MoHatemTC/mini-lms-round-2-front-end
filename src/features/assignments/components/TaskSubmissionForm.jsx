@@ -14,7 +14,7 @@ export default function TaskSubmissionForm({ task, onSuccess }) {
   // Local state for uploads and inputs
   const [uploadedFiles, setUploadedFiles] = useState({}); // e.g. { ZIP: { name: '...', url: '...' } }
   const [linkValues, setLinkValues] = useState({}); // e.g. { github: '...' }
-  
+
   // UI states
   const [uploadingField, setUploadingField] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -37,6 +37,35 @@ export default function TaskSubmissionForm({ task, onSuccess }) {
     const file = e.target.files[0];
     if (!file) return;
 
+    const ext = file.name.split('.').pop().toLowerCase();
+
+    // Strict extension verification matching backend rules
+    let isValid = false;
+    switch (type.toUpperCase()) {
+      case 'ZIP':
+        isValid = ext === 'zip';
+        break;
+      case 'PDF':
+        isValid = ext === 'pdf';
+        break;
+      case 'MP4':
+        isValid = ext === 'mp4';
+        break;
+      case 'IMAGE':
+        isValid = ['png', 'jpg', 'jpeg', 'gif', 'svg'].includes(ext);
+        break;
+      case 'DOCUMENT':
+        isValid = ['doc', 'docx', 'pdf'].includes(ext);
+        break;
+      default:
+        isValid = true;
+    }
+
+    if (!isValid) {
+      setErrorMsg(`Invalid file type: Selected file ".${ext}" does not match the required ${type} format.`);
+      return;
+    }
+
     setErrorMsg(null);
     setUploadingField(type);
 
@@ -44,7 +73,7 @@ export default function TaskSubmissionForm({ task, onSuccess }) {
       const result = await assignmentService.uploadFile(file);
       // Backend returns structure: { status: 'success', data: { id, filename, url, ... } }
       const uploadedFileMeta = result.data;
-      
+
       setUploadedFiles(prev => ({
         ...prev,
         [type]: {
@@ -81,7 +110,7 @@ export default function TaskSubmissionForm({ task, onSuccess }) {
     setErrorMsg(null);
 
     // --- Client-side validation checks ---
-    
+
     // 1. Check if all required files are uploaded
     for (const reqFile of requiredFiles) {
       if (!uploadedFiles[reqFile]) {
@@ -136,7 +165,7 @@ export default function TaskSubmissionForm({ task, onSuccess }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
-      
+
       {/* File Uploads section */}
       {requiredFiles.length > 0 && (
         <div className="space-y-4">

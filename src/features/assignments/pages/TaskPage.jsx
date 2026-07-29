@@ -111,7 +111,7 @@ export default function TaskPage({ isAdmin }) {
             You must pass the prerequisite quiz **({task?.required_quiz_id})** before this assignment unlocks.
           </p>
         </div>
-        
+
         <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to={`/learner/quizzes/${task?.required_quiz_id}`}
@@ -134,7 +134,7 @@ export default function TaskPage({ isAdmin }) {
   // Render Unlocked Learner Flow
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-      
+
       {/* Header Info */}
       <div className="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-xl">
         <div className="space-y-2">
@@ -173,10 +173,10 @@ export default function TaskPage({ isAdmin }) {
       {/* Submission Form or Existing Hand-in Display */}
       <div className="glass-panel p-8 rounded-3xl border border-white/5 space-y-6 shadow-lg">
         <h3 className="font-outfit font-bold text-lg text-white">Your Hand-In</h3>
-        
+
         {submission ? (
           <div className="space-y-6">
-            
+
             {/* Success card banner */}
             <div className="p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl flex items-start gap-3">
               <ShieldCheck className="text-emerald-400 mt-0.5" size={18} />
