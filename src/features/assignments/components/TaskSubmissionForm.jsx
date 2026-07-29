@@ -49,7 +49,7 @@ export default function TaskSubmissionForm({ task, onSuccess }) {
         ...prev,
         [type]: {
           name: file.name,
-          url: uploadedFileMeta.url || `http://localhost:5000/uploads/generic/${uploadedFileMeta.filename || uploadedFileMeta.id}`,
+          url: uploadedFileMeta.url,
           type: type
         }
       }));

@@ -84,6 +84,22 @@ export const assignmentService = {
     } catch (error) {
       throw handleApiError(error);
     }
+  },
+
+  /**
+   * Securely download an uploaded file as a Blob using the authenticated axiosInstance
+   * @param {string} path - The relative file URL stored in the database submission
+   * @returns {Promise<Blob>}
+   */
+  downloadFile: async (path) => {
+    try {
+      const response = await axiosInstance.get(path, {
+        responseType: 'blob'
+      });
+      return response.data;
+    } catch (error) {
+      throw handleApiError(error);
+    }
   }
 };
 

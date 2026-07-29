@@ -48,6 +48,22 @@ export default function TaskPage({ isAdmin }) {
     loadTaskData(); // Reload to get fresh status
   };
 
+  const handleFileDownload = async (file) => {
+    try {
+      const blob = await assignmentService.downloadFile(file.url);
+      const objectUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.setAttribute('download', file.name);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(objectUrl);
+    } catch (err) {
+      alert(`Failed to download file: ${err.message || err}`);
+    }
+  };
+
   // Render Admin View
   if (isAdmin) {
     return (
@@ -178,16 +194,14 @@ export default function TaskPage({ isAdmin }) {
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Submitted Files</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {submission.files.map((file, idx) => (
-                    <a
+                    <button
                       key={idx}
-                      href={file.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-slate-950/80 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 rounded-2xl flex items-center justify-between text-xs text-white transition-all font-semibold"
+                      onClick={() => handleFileDownload(file)}
+                      className="w-full text-left p-4 bg-slate-950/80 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 rounded-2xl flex items-center justify-between text-xs text-white transition-all font-semibold cursor-pointer"
                     >
                       <span className="truncate max-w-[200px]">{file.name}</span>
                       <ExternalLink size={12} className="text-slate-500" />
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
