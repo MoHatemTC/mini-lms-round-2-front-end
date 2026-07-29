@@ -22,6 +22,7 @@ const CourseDetails = React.lazy(() => import('../features/courses/pages/CourseD
 const QuizPage = React.lazy(() => import('../features/quizzes/pages/QuizPage'));
 const CourseEmbed = React.lazy(() => import('../features/courses/pages/CourseEmbed'));
 const CertificateEmbed = React.lazy(() => import('../features/certificates/pages/CertificateEmbed'));
+const TaskPage = React.lazy(() => import('../features/assignments/pages/TaskPage'));
 
 const RootRedirect = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -79,6 +80,7 @@ const AppRoutes = () => {
               <Route path="/admin/courses/create" element={<CreateCourse />} />
               <Route path="/admin/courses/:courseId/materials/upload" element={<UploadMaterial />} />
               <Route path="/admin/quizzes/create" element={<QuizPage isAdmin={true} />} />
+              <Route path="/admin/tasks/create" element={<TaskPage isAdmin={true} />} />
             </Route>
           </Route>
 
@@ -88,6 +90,7 @@ const AppRoutes = () => {
               <Route path="/learner/courses" element={<LearnerCourses />} />
               <Route path="/learner/courses/:courseId" element={<CourseDetails />} />
               <Route path="/learner/quizzes/:id" element={<QuizPage isAdmin={false} />} />
+              <Route path="/learner/tasks/:id" element={<TaskPage isAdmin={false} />} />
             </Route>
           </Route>
 
