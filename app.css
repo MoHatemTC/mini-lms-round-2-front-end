@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h1 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.card h2 {
+    margin-bottom: 25px;
+}
+
+.card input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.card button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    opacity: 0.85;
+}
+
+.google {
+    background: #4285f4 !important;
+}
+
+.github {
+    background: #333 !important;
+}
+
+.divider {
+    margin: 20px 0;
+    color: #888;
+}
+
+.message {
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+.card a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.card p {
+    margin-top: 20px;
+    line-height: 1.5;
+}
