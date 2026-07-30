@@ -1,0 +1,530 @@
+/* =====================================================
+   GLOBAL STYLES
+   ===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f7fb;
+  color: #1f2937;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* =====================================================
+   LOGIN & SIGNUP PAGES
+   ===================================================== */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #1e40af
+  );
+}
+
+
+/* Authentication Card */
+
+.container {
+  width: 100%;
+  max-width: 400px;
+
+  background-color: white;
+
+  padding: 40px;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Authentication Title */
+
+.container h1 {
+  text-align: center;
+
+  color: #1e3a8a;
+
+  margin-bottom: 30px;
+
+  font-size: 30px;
+}
+
+
+/* Input Fields */
+
+.container input {
+  width: 100%;
+
+  padding: 14px;
+
+  margin-bottom: 15px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.container input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.15);
+}
+
+
+/* Authentication Button */
+
+.container button {
+  width: 100%;
+
+  padding: 14px;
+
+  margin-top: 10px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.container button:hover {
+  background-color: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+
+/* Text Under Form */
+
+.container p {
+  text-align: center;
+
+  margin-top: 20px;
+
+  color: #6b7280;
+}
+
+
+/* Sign Up Link */
+
+.container p a {
+  color: #2563eb;
+
+  font-weight: bold;
+}
+
+.container p a:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+
+nav {
+  height: 70px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  padding: 0 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  box-shadow:
+    0 3px 10px
+    rgba(0, 0, 0, 0.1);
+}
+
+nav h2 {
+  font-size: 24px;
+}
+
+
+/* Logout Button */
+
+nav button {
+  background-color: white;
+
+  color: #2563eb;
+
+  padding: 10px 20px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+nav button:hover {
+  background-color: #e5e7eb;
+}
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+.dashboard-page {
+  min-height: 100vh;
+
+  background-color: #f4f7fb;
+}
+
+
+/* Dashboard Content */
+
+.dashboard-content {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 40px;
+}
+
+
+/* Dashboard Title */
+
+.dashboard-content h1 {
+  font-size: 32px;
+
+  margin-bottom: 30px;
+
+  color: #111827;
+}
+
+
+/* Dashboard Cards Grid */
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+/* Dashboard Card */
+
+.dashboard-card {
+  background-color: white;
+
+  padding: 30px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(0, 0, 0, 0.12);
+}
+
+
+/* Card Title */
+
+.dashboard-card h3 {
+  color: #2563eb;
+
+  margin-bottom: 10px;
+
+  font-size: 20px;
+}
+
+
+/* Card Description */
+
+.dashboard-card p {
+  color: #6b7280;
+
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   EMAIL LOGS PAGE
+   ===================================================== */
+
+.email-page {
+  min-height: 100vh;
+
+  background-color: #f4f7fb;
+
+  padding: 40px;
+}
+
+
+.email-container {
+  max-width: 1000px;
+
+  margin: 0 auto;
+}
+
+
+/* Email Page Title */
+
+.email-container h1 {
+  font-size: 32px;
+
+  margin-bottom: 30px;
+
+  color: #111827;
+}
+
+
+/* Email Table */
+
+.email-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.08);
+}
+
+
+/* Table Header */
+
+.email-table thead {
+  background-color: #2563eb;
+
+  color: white;
+}
+
+.email-table th {
+  padding: 16px;
+
+  text-align: left;
+}
+
+
+/* Table Body */
+
+.email-table td {
+  padding: 16px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+
+/* Table Hover */
+
+.email-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+
+/* Email Status */
+
+.status-sent {
+  color: #16a34a;
+
+  font-weight: bold;
+}
+
+
+/* =====================================================
+   ACCESS DENIED PAGE
+   ===================================================== */
+
+.denied-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background-color: #f4f7fb;
+
+  text-align: center;
+
+  padding: 20px;
+}
+
+
+/* 403 */
+
+.denied-page h1 {
+  font-size: 80px;
+
+  color: #dc2626;
+
+  margin-bottom: 10px;
+}
+
+
+/* Access Denied Title */
+
+.denied-page h2 {
+  font-size: 30px;
+
+  color: #111827;
+
+  margin-bottom: 10px;
+}
+
+
+/* Access Denied Description */
+
+.denied-page p {
+  color: #6b7280;
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+
+/* Tablets */
+
+@media (max-width: 768px) {
+
+  nav {
+    padding: 0 20px;
+  }
+
+  .dashboard-content {
+    padding: 25px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .email-page {
+    padding: 25px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+  .container {
+    padding: 30px 20px;
+  }
+
+  .container h1 {
+    font-size: 26px;
+  }
+
+  nav {
+    height: 60px;
+
+    padding: 0 15px;
+  }
+
+  nav h2 {
+    font-size: 20px;
+  }
+
+  nav button {
+    padding: 8px 12px;
+  }
+
+  .dashboard-content {
+    padding: 20px;
+  }
+
+  .dashboard-content h1 {
+    font-size: 26px;
+  }
+
+  .email-page {
+    padding: 20px;
+  }
+
+  .email-container {
+    overflow-x: auto;
+  }
+
+  .email-table {
+    min-width: 600px;
+  }
+
+}
